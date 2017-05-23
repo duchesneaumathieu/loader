@@ -1,3 +1,3 @@
-from AbstractLoader import AbstractLoader
-from Classification import *
-from InstanceSegmentation import *
+"""
+exemple: from loader.Type import Dataset
+"""
