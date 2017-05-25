@@ -66,7 +66,7 @@ class BookCorpus(AbstractLoader):
         return [self.encode.get(token, 0) for token in tokens]
     
     def preprocess(self, seqs, batch_infos):
-        return [np.array(seqs)] batch_infos
+        return [np.array(seqs)], batch_infos
     
     def decode_seq(self, seq):
         return u' '.join([self.decode.get(n, u'DFT') for n in seq])
