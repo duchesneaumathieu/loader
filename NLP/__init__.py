@@ -1,1 +1,2 @@
 from BookCorpus import BookCorpus
+from BookCorpusHDF5 import BookCorpusHDF5

@@ -46,9 +46,7 @@ class BookCorpus(AbstractLoader):
             
         self.data = dict([(int(k), v) for k, v in full_data.iteritems() if int(k) in self.books_id])
         
-        self.start()
-        
-    def get_infos(self):
+    def get_infos(self, seed=0):
         infos = list()
         for k, book in self.data.iteritems():
             beg = 0
@@ -60,13 +58,13 @@ class BookCorpus(AbstractLoader):
                 end += self.seq_length
         return infos
     
-    def load(self, info, batch_infos=None):
+    def load(self, info):
         k, beg, end = info
         tokens = self.data[k]['tokens'][beg:end]
         return [self.encode.get(token, 0) for token in tokens]
     
     def preprocess(self, seqs, batch_infos):
-        return [np.array(seqs)], batch_infos
+        return [np.array(seqs)]
     
     def decode_seq(self, seq):
         return u' '.join([self.decode.get(n, u'DFT') for n in seq])
